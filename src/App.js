@@ -3,23 +3,33 @@ import { TodoSearch } from './TodoSearch'
 import { TodoList } from './TodoList'
 import { TodoItem } from './TodoItem'
 import { CreateTodoButton } from './CreateTodoButton'
+import React from 'react'
 import './App.css';
+    
+const defaultTodos = [
+    {text: 'Task 1', completed: true},
+    {text: 'Task 2', completed: false},
+    {text: 'Task 3', completed: true},
+    {text: 'Task 4', completed: false}
+]
 
 function App() {
   return (
-    <div className="App">
+    <React.Fragment>
         
-        <TodoCounter />
+        <TodoCounter completed={3} total={5} />
         <TodoSearch />
         
         <TodoList>
-            <TodoItem />
-            <TodoItem />
-            <TodoItem />
+            {defaultTodos.map(todo => {
+                return(
+                <TodoItem key={todo.text} text={todo.text} completed={todo.completed} />
+            )
+            })}
         </TodoList>
         
         <CreateTodoButton />
-    </div>
+    </React.Fragment>
   );
 }
 
