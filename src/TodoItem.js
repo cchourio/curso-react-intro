@@ -1,8 +1,8 @@
-function TodoItem(props) {
+function TodoItem({ text, completed }) {
     return(
         <li>
-            <span>V</span>
-            <p>Task pending</p>
+            <span>v {completed} </span>
+            <p>{text}</p>
             <span>X</span>
         </li>
     );
