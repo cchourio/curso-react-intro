@@ -4,19 +4,17 @@ import { TodoList } from './TodoList'
 import { TodoItem } from './TodoItem'
 import { CreateTodoButton } from './CreateTodoButton'
 import React from 'react'
-import './App.css';
     
 const defaultTodos = [
     {text: 'Task 1', completed: true},
     {text: 'Task 2', completed: false},
-    {text: 'Task 3', completed: true},
+    {text: 'Task 3', completed: false},
     {text: 'Task 4', completed: false}
 ]
 
 function App() {
   return (
-    <React.Fragment>
-        
+    <>
         <TodoCounter completed={3} total={5} />
         <TodoSearch />
         
@@ -29,7 +27,7 @@ function App() {
         </TodoList>
         
         <CreateTodoButton />
-    </React.Fragment>
+    </>
   );
 }
 
