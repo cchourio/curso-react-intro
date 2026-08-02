@@ -9,26 +9,34 @@ const defaultTodos = [
     {text: 'Task 1', completed: true},
     {text: 'Task 2', completed: false},
     {text: 'Task 3', completed: false},
-    {text: 'Task 4', completed: false}
+    {text: 'Task 4', completed: false},
+    {text: 'Task 5', completed: true}
 ]
 
 function App() {
-  return (
-    <>
-        <TodoCounter completed={3} total={5} />
-        <TodoSearch />
-        
-        <TodoList>
-            {defaultTodos.map(todo => {
-                return(
-                <TodoItem key={todo.text} text={todo.text} completed={todo.completed} />
-            )
-            })}
-        </TodoList>
-        
-        <CreateTodoButton />
-    </>
-  );
+    const [todos, setTodos] = React.useState(defaultTodos);
+    const [searchValue, setSearchValue] = React.useState('');
+
+    // Derived states
+    const completedTodos = todos.filter(todo => todo.completed).length
+    const totalTodos = todos.length;
+
+    return (
+        <>
+            <TodoCounter completed={completedTodos} total={totalTodos} />
+            <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
+            
+            <TodoList>
+                {defaultTodos.map(todo => {
+                    return(
+                    <TodoItem key={todo.text} text={todo.text} completed={todo.completed} />
+                )
+                })}
+            </TodoList>
+            
+            <CreateTodoButton />
+        </>
+    );
 }
 
 export default App;
